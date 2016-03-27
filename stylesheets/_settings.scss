@@ -1,17 +1,18 @@
 $cursor-default-value: auto !default;
 $block-grid-elements: 5;
-$body-bg: white;
+$body-background: white;
 $body-font-color: rgba(0,0,0,0.8);
 $body-font-family: "Noto Serif", "DejaVu Serif", "Serif", serif;
 
 // Required global settings and mixins for Foundation
-@import "foundation/components/global";
+//@import "foundation/components/global";
+@import "global";
 
 $primary-color: darken(#2561ba, 5%);
 $alert-color: lighten(#3a120c, 15%); // $code-color is 15% darker than $alert-color, so we lighten here by 15%
 $pale-orange: #ddac7b;
 
-$panel-bg: #f8f8f7;
+$panel-background: #f8f8f7;
 $panel-font-color: rgba(0,0,0,0.75);
 
 $global-radius: 4px;
@@ -39,7 +40,7 @@ $code-font-size: emCalc(15px);
 $code-font-weight: normal;
 $code-line-height: 1.45;
 $code-color: rgba(0,0,0,0.9);
-$code-bg-color: #f7f7f8;
+$code-background-color: #f7f7f8;
 $code-padding: 0.1em 0.5ex;
 $code-word-spacing: -0.15em;
 $code-text-rendering: optimizeSpeed;
@@ -61,9 +62,11 @@ $reveal-modal-padding: 0;
 $table-head-font-size: inherit;
 $table-row-font-size: inherit;
 $table-line-height: 1.6;
-$table-head-bg: #f7f8f7;
-$table-even-row-bg: #f8f8f7;
+$table-head-background: #f7f8f7;
+$table-even-row-background: #f8f8f7;
 $table-border-color: #dedede;
+$table-border-size: 1px;
+$table-head-font-weight: normal;
 
 $topbar-margin-bottom: 0;
 $topbar-title-weight: 300;
@@ -71,7 +74,7 @@ $topbar-link-weight: 600;
 
 $icon-text-shadow: 1px 1px 2px rgba(0, 0, 0, .5) !default;
 $rainbow-lightness: -25% !default;
-$rainbow-bg-lightness: -2% !default;
+$rainbow-background-lightness: -2% !default;
 $fontAwesomePath: '../fonts' !default;
 $thumb-border-style: solid !default;
 $thumb-border-width: 4px !default;

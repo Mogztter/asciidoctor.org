@@ -14,7 +14,6 @@ gem 'compass', '1.0.3'
 gem 'haml', '4.0.7'
 gem 'slim', '3.0.6'
 gem 'tilt', '2.0.2'
-gem 'zurb-foundation', '4.3.2'
 gem 'rb-inotify', '0.9.7', :platforms => [:ruby, :jruby]
 gem 'tzinfo', '1.2.2', :group => :test
 gem 'git', '1.2.9.1', :group => :test

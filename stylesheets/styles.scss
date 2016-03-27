@@ -1,22 +1,66 @@
 @import "fonts/default";
-@import "normalize";
+//@import "normalize";
 @import "settings";
 
 @import "compass/css3/images";
 @import "compass/css3/box-shadow";
 // global already included in _settings.scss
 //@import "foundation/components/global"; // *always required
-@import "foundation/components/grid";
-@import "foundation/components/block-grid";
-@import "foundation/components/type";
-@import "foundation/components/buttons";
-@import "foundation/components/button-groups"; // *requires components/buttons
-@import "foundation/components/top-bar";  // *requires components/grid
-@import "foundation/components/inline-lists";
-@import "foundation/components/pagination";
-@import "foundation/components/panels";
-@import "foundation/components/tables";
-@import "foundation/components/switch";
+@import "foundation";
+//@import "settings/settings";
+//@import "foundation/components/grid";
+//@import "foundation/components/block-grid";
+//@import "foundation/components/type";
+//@import "foundation/components/buttons";
+//@import "foundation/components/button-groups"; // *requires components/buttons
+//@import "foundation/components/top-bar";  // *requires components/grid
+//@import "foundation/components/inline-lists";
+//@import "foundation/components/pagination";
+//@import "foundation/components/panels";
+//@import "foundation/components/tables";
+//@import "foundation/components/switch";
+
+@include foundation-global-styles;
+@include foundation-grid;
+// @include foundation-flex-grid;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+// @include foundation-range-input;
+@include foundation-accordion;
+@include foundation-accordion-menu;
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-close-button;
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-drilldown-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-flex-video;
+@include foundation-label;
+@include foundation-media-object;
+@include foundation-off-canvas;
+@include foundation-orbit;
+@include foundation-pagination;
+@include foundation-progress-bar;
+// @include foundation-progress-element;
+// @include foundation-meter-element;
+@include foundation-slider;
+@include foundation-sticky;
+@include foundation-reveal;
+@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-thumbnail;
+@include foundation-title-bar;
+@include foundation-tooltip;
+@include foundation-top-bar;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+// @include foundation-flex-classes;
 
 .center {
   margin-left: auto;
@@ -27,7 +71,7 @@
   width: 100%;
 }
 
-@media #{$small} {
+@media #{$small-only} {
   .large-text-right {
     text-align: right !important;
   }
@@ -91,7 +135,6 @@ p, td.content {
 
 .top-bar {
   border-bottom: 3px solid #ffca28;
-  height: $topbar-height + 3px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 
   // FIXME our global ul override is breaking this
@@ -147,7 +190,7 @@ p, td.content {
         margin-top: 0.25em;
         margin-bottom: 0.2em;
 
-        @media #{$small} {
+        @media #{$small-only} {
           font-size: 4em;
           line-height: 1.4;
         }
@@ -160,7 +203,6 @@ p, td.content {
       a.button {
         margin-right: 10px;
         text-decoration: none;
-        @include radius;
         line-height: 1.3;
         text-align: left;
         padding: 0.75em 1.25em;
@@ -194,8 +236,6 @@ p, td.content {
 }
 
 #toc {
-  @include panel($panel-bg, $panel-padding, false);
-  @include radius;
   & > ul {
     margin-left: emCalc(2px);
   }
@@ -230,8 +270,7 @@ p, td.content {
 }
 
 body > footer {
-  background: lighten($topbar-bg, 15%);
-  color: $topbar-link-color;
+  background: lighten($topbar-background, 15%);
   padding: 11px 0;
   margin-top: 30px;
   // NOTE I don't know what's causing the extra space under the footer
@@ -275,8 +314,7 @@ code, pre {
   font-size: $code-font-size;
   font-weight: $code-font-weight;
   color: $code-color;
-  background-color: $code-bg-color;
-  @include radius;
+  background-color: $code-background-color;
   line-height: $code-line-height;
   padding: $code-padding;
   word-spacing: $code-word-spacing;
@@ -300,7 +338,6 @@ kbd:not(.keyseq) {
   background-color: #f7f7f7;
   //border: 1px solid $pre-border-color;
   border: 1px solid #ccc;
-  @include radius(3px);
   @include box-shadow(0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 0.1em white inset);
   margin: -0.15em 0.15em 0 0.15em;
   padding: 0.2em 0.6em 0.2em 0.5em;
@@ -322,14 +359,14 @@ kbd:not(.keyseq) {
 
 .paragraph.lead > p,
 #preamble .sectionbody > .paragraph:first-of-type p {
-  @extend %lead;
+  //@extend %lead;
   color: rgba(0,0,0,.85);
 }
 
 #preamble .sectionbody > .paragraph:first-of-type p,
 div.secondary > :first-child {
   margin-top: 0;
-  @media #{$small} {
+  @media #{$small-only} {
     margin-top: 0.25rem;
   }
 }
@@ -343,7 +380,7 @@ div.secondary {
   // separate primary and secondary content by visible break
   border-top: 1px solid #ddddd8;
   padding-top: 2em;
-  @media #{$small} {
+  @media #{$small-only} {
     border-top: none;
     padding-top: 0;
   }
@@ -351,7 +388,7 @@ div.secondary {
   &.navigation {
     border-top: none;
     padding-top: 0.25em;
-    @media #{$small} {
+    @media #{$small-only} {
       padding-top: 0;
     }
   }
@@ -359,7 +396,7 @@ div.secondary {
 
 // this leads to some stylesheet bloat
 %title {
-  @extend %subheader;
+  //@extend %subheader;
   text-rendering: optimizeLegibility;
   text-align: left;
   font-style: $subheader-font-style;
@@ -412,7 +449,6 @@ div.secondary {
 .listingblock,
 .stemblock,
 .videoblock {
-  margin-bottom: $panel-margin-bottom;
 }
 
 .admonitionblock td.content,
@@ -465,7 +501,7 @@ table.tableblock > caption.title {
   td.content {
     padding-left: emCalc(18px);
     padding-right: emCalc(20px);
-    border-left: $hr-border-width $hr-border-style $hr-border-color;
+    border-left: 1px solid $medium-gray;
     //color: $blockquote-font-color;
     color: $blockquote-cite-font-color;
 
@@ -478,17 +514,13 @@ table.tableblock > caption.title {
 }
 
 .admonitionblock.lead > table td.content {
-  font-size: $paragraph-font-size * 1.5;
-  line-height: $paragraph-line-height;
+  font-size: $lead-font-size;
+  line-height: $paragraph-lineheight;
   color: $body-font-color;
 }
 
 .exampleblock > .content {
-  @include panel($body-bg, $panel-padding, false);
-  @include radius;
   background-color: #fffef7;
-  border-color: $panel-border-color;
-  @include single-box-shadow(0, 1px, 4px, null, $panel-border-color);
   padding-bottom: 0; // we force a margin-bottom on the last child instead
 
   & > :last-child {
@@ -501,8 +533,6 @@ table.tableblock > caption.title {
 }
 
 .sidebarblock {
-  @include panel($panel-bg, $panel-padding, false);
-  @include radius;
 
   padding-bottom: 0; // we force a margin-bottom on the last child in content instead
 
@@ -540,7 +570,6 @@ table.tableblock > caption.title {
 .literalblock,
 .listingblock {
   pre, pre[class] {
-    @include radius;
     word-wrap: break-word;
 
     &.nowrap {
@@ -553,11 +582,11 @@ table.tableblock > caption.title {
     padding: emCalc(16px);
     font-size: emCalc(13px);
 
-    @media #{$small} {
+    @media #{$small-only} {
       font-size: emCalc(14.5px);
     }
 
-    @media #{$medium} {
+    @media #{$medium-up} {
       font-size: emCalc(16px);
     }
   }
@@ -834,9 +863,8 @@ table tfoot th {
 
 // vertical table header (block)
 tbody tr th {
-  display: $table-display;
   line-height: $table-line-height;
-  background: $table-head-bg;
+  background: $table-head-background;
 }
 
 // vertical table header (content)
@@ -922,7 +950,7 @@ ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
 }
 
 ul.inline {
-  @include inline-list;
+  //@include inline-list;
 }
 
 .compact li > p {
@@ -1000,20 +1028,15 @@ td.hdlist1 {
   line-height: 0;
   display: inline-block;
   border: $thumb-border-style $thumb-border-width $thumb-border-color;
-  @if $experimental {
-    -webkit-box-shadow: $thumb-box-shadow;
-  }
   box-shadow: $thumb-box-shadow;
 }
 
 .imageblock {
   &.left,
   &[style*="float: left"] {
-    margin: emCalc(4px) emCalc(10px) $panel-margin-bottom 0;
   }
   &.right,
   &[style*="float: right"] {
-    margin: emCalc(4px) 0 $panel-margin-bottom emCalc(10px);
   }
 
   & > .title {
@@ -1074,7 +1097,6 @@ sup.footnoteref {
 #footnotes {
   padding-top: emCalc(12px);
   padding-bottom: emCalc(12px);
-  margin-bottom: $panel-margin-bottom / 2;
   hr {
     width: 20%;
     min-width: emCalc(100px);
@@ -1100,7 +1122,6 @@ sup.footnoteref {
 
   // footnotes in embedded documents
   #content & {
-    margin-top: -$panel-margin-bottom / 2;
     margin-bottom: 0;
     padding: emCalc(12px) 0;
   }
@@ -1147,7 +1168,7 @@ sup.footnoteref {
     }
 
     .#{$color}-background {
-      background-color: scale-color(string-to-color($color), $lightness: $rainbow-bg-lightness);
+      background-color: scale-color(string-to-color($color), $lightness: $rainbow-background-lightness);
     }
   }
 
@@ -1157,14 +1178,6 @@ sup.footnoteref {
 
 // use alternative triple line menu icon so it appears in older webkit browsers
 .top-bar .toggle-topbar.menu-icon a {
-  @include background-image(linear-gradient(top,
-    $topbar-bg 0%, $topbar-bg 27%,
-    $topbar-menu-icon-color 27%, $topbar-menu-icon-color 33%,
-    $topbar-bg 33%, $topbar-bg 45%,
-    $topbar-menu-icon-color 45%, $topbar-menu-icon-color 50%,
-    $topbar-bg 50%, $topbar-bg 62%,
-    $topbar-menu-icon-color 62%, $topbar-menu-icon-color 68%,
-    $topbar-bg 68%, $topbar-bg 100%));
   width: 18px;
   right: -1px;
   span {
@@ -1174,7 +1187,7 @@ sup.footnoteref {
 }
 
 // fix Foundation not calculating based on $reveal-position-top for large screens
-//@media #{$small} {
+//@media #{$small-only} {
 //  .reveal-modal {
 //    top: $reveal-position-top + emCalc(60px);
 //    padding: $reveal-modal-padding;
@@ -1182,7 +1195,6 @@ sup.footnoteref {
 //}
 
 .imageblock.feature {
-  @include panel($bg: #fff, $padding: 0.5em);
 
   & > .title > span.credit {
     font-weight: normal;
@@ -1193,7 +1205,6 @@ sup.footnoteref {
 
 .button-group {
   .button.first {
-    @include side-radius($default-float, $button-radius);
   }
 
   & > li i.fa {
@@ -1229,11 +1240,10 @@ article.post {
   }
 
   .entry-content {
-    margin-bottom: $panel-margin-bottom;
   }
 
   .tags .label {
-    margin-right: $pagination-li-margin;
+    margin-right: $pagination-item-spacing;
   }
 }
 
@@ -1309,7 +1319,6 @@ ul.toolbar {
   //background: none;
   background-color: #f7f8f7;
   border: none;
-  @include radius(0);
   ul li ul {
     margin-left: 1em;
   }

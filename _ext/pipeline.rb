@@ -1,5 +1,4 @@
 require 'compass'
-require 'zurb-foundation'
 require 'awestruct_ext'
 require 'tagger_patch'
 require 'sass_functions'
@@ -24,6 +23,8 @@ Awestruct::Extensions::Pipeline.new do
     extension Awestruct::Extensions::Atomizer.new :posts, '/feed.atom', :template => '_layouts/feed.atom.haml'
     extension Awestruct::Extensions::Disqus.new
   end
+
+  extension FoundationExtension.new
 
   #transformer Awestruct::Extensions::Minify.new([:js])
 end

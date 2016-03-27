@@ -1,0 +1,19 @@
+{
+  "name": "asciidoctor-site",
+  "version": "1.0.0",
+  "authors": [
+    "Dan Allen (https://github.com/mojavelinux)",
+    "Sarah White (https://twitter.com/carbonfray)",
+    "Guillaume Grossetie (https://github.com/mogztter)"
+  ],
+  "description": "Asciidoctor website.",
+  "license": "MIT",
+  "homepage": "http://asciidoctor.org",
+  "dependencies": {
+    "foundation-sites": "~6.1.2",
+    "motion-ui": "~1.1.0",
+    "foundation-sites": "~6.2.0",
+    "motion-ui": "~1.2.2"
+  },
+  "private": true
+}

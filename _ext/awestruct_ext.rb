@@ -11,6 +11,18 @@ class Awestruct::Tilt::AsciidoctorTemplate
   end
 end
 
+
+class FoundationExtension
+  def execute(site)
+    puts 'Hello world'
+    if defined?(Compass)
+      Compass::Frameworks.register("foundation",
+        :stylesheets_directory => File.join("_bower_components/foundation-sites/scss")
+      )
+    end
+  end
+end
+
 #require 'open-uri/cached'
 #OpenURI::Cache.cache_path = ::File.join Awestruct::Engine.instance.config.dir, 'vendor', 'uri-cache'
 
